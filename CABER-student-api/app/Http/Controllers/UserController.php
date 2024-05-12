@@ -50,7 +50,7 @@ class UserController extends Controller
             $user_query->select($user_queriesArray);
         }
 
-        $limit = $request->get('limit');
+        $limit = $request->get('limit') ? $request->limit: 10;
         $users = $user_query->limit($limit)->get();
     
         return response()->json($users);
